@@ -1,0 +1,9 @@
+<%#= @entry.comment_threads.count %> 
+<h3 class="comments_title">Comments</h3>
+
+<div id="comments">
+  <%#= render :partial => @entry.comment_threads %>
+  <%= render partial: "comments/template", \
+             locals: {commentable: entry, \
+                      new_comment: @comment} %> 
+</div>

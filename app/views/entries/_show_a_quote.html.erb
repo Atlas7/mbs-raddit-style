@@ -1,0 +1,7 @@
+<% quote = entry.quote %>
+<h2><%= quote.title %></h2>
+<%= render partial: 'entries/element_type', locals: {entry: entry} %>
+<%= render partial: 'entries/submitted_by', locals: {entry: entry} %>
+<div><%= link_to "Go to Quote object", quote_path(quote) %></div>
+<%= render partial: 'quotes/show', locals: {quote: quote} %>
+<br/><br/>

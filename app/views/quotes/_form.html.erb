@@ -1,0 +1,14 @@
+<%= form_for(quote) do |f| %>
+
+  <%= render partial: 'quotes/check_form_errors', locals: {quote: quote} %>
+
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-lg btn-primary" %>
+  </div>
+
+<% end %>

@@ -1,0 +1,13 @@
+<% @entry_elements.each do |entry_element| %>
+  <% if entry_element.element_type == "Quote" %>
+    <% element = Quote.find(entry_element.element_id) %>
+    <%= render partial: "quotes/list_a_quote", locals: {quote: element} %>
+
+  <% elsif entry_element.element_type == "Picture" %>
+    <% element = Picture.find(entry_element.element_id) %>
+    <%= render partial: "pictures/list_a_picture", locals: {picture: element} %>
+
+  <% else %>
+
+  <% end %>
+<% end %>

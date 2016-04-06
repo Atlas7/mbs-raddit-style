@@ -1,0 +1,4 @@
+<% pictures.each do |picture| %>
+  <% picture = picture %>
+  <%= render partial: "pictures/list_one", locals: {picture: picture} %> 
+<% end %>

@@ -1,0 +1,6 @@
+<% picture = entry.picture %>
+<h2><%= picture.title %></h2>
+<%= render partial: 'entries/element_type', locals: {entry: entry}  %>
+<%= render partial: 'entries/submitted_by', locals: {entry: entry}  %>
+<div><%= link_to "Go to Picture object", picture_path(picture) %></div>
+<%= render partial: 'pictures/show', locals: {picture: picture} %>

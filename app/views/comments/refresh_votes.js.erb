@@ -1,0 +1,3 @@
+$(".comment-score[data-id=" + <%= params[:id] %>+ "]").text(<%= @comment.score%>);
+$(".comment-likes[data-id=" + <%= params[:id] %>+ "]").text(<%= @comment.get_likes.size %>);
+$(".comment-dislikes[data-id=" + <%= params[:id] %>+ "]").text(<%= @comment.get_dislikes.size %>);

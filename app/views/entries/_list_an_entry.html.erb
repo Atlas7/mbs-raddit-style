@@ -1,0 +1,12 @@
+<% element_type = entry.entry_element.element_type %>
+
+<% if element_type == "Quote" %>
+  <%= render partial: "entries/list_a_quote", locals: {entry: entry} %>
+<% elsif element_type == "Picture" %>
+  <%= render partial: "entries/list_a_picture", locals: {entry: entry} %>
+<% else %>
+  <%= render partial: "entries/invalid_medium", locals: {entry: entry} %>
+<% end %>
+
+<%= render partial: "entries/category_name", locals: {entry: entry} %>
+<%= render partial: "entries/element_type", locals: {entry: entry} %>

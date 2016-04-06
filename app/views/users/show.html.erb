@@ -1,0 +1,47 @@
+<h2>User Profile: <%= @user.name %></h2>
+
+<% if user_signed_in? && (@user == current_user) %>
+	<%= link_to :edit, edit_user_profile_path %><br>
+<% end %>
+
+<%# show user basic profile form %>
+<%= form_for(@user) do |f| %>
+  <fieldset disabled>
+    <%= render 'form', :f => f %>
+  </fieldset>
+<% end %>
+
+<h2>Entries published</h2>
+<small>list all entries published by this user</small><br>
+<% @entries.each do |entry| %>
+  <%= render partial: "entries/list_an_entry", locals: {entry: entry} %> 
+  <%= render partial: 'entries/submitted_by', locals: {entry: entry}  %>
+  <%= render partial: 'entries/vote', locals: {entry: entry} %>
+<% end %>
+
+<%# list all links voted by that user %>
+<h2>Items up-voted</h2>
+<small>list all up-voted items by this user</small><br>
+<% @user.find_up_voted_items.each do |entry| %>
+  <%= render partial: "entries/list_an_entry", locals: {entry: entry} %>
+  <%= render partial: 'entries/submitted_by', locals: {entry: entry}  %>
+  <%= render partial: 'entries/vote', locals: {entry: entry} %>
+<% end %>
+
+<h2>Items down-voted</h2>
+<small>list all up-voted items by this user</small><br>
+<% @user.find_down_voted_items.each do |entry| %>
+  <%= render partial: "entries/list_an_entry", locals: {entry: entry} %> 
+  <%= render partial: 'entries/submitted_by', locals: {entry: entry}  %>
+  <%= render partial: 'entries/vote', locals: {entry: entry} %>
+<% end %>
+
+<%# For debug only. Remove below in production %>
+<!-- <h2>@user (debug mode)</h2> -->
+<%#= debug(@user) %>
+
+<%# For debug only. Remove below in production %>
+<!-- <h2>@user.profile (debug mode)</h2> -->
+<%#= debug(@user.profile) %>
+
+

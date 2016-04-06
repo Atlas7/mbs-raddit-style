@@ -1,0 +1,4 @@
+
+$(".score-count[data-id=" + <%= params[:id] %>+ "]").text(<%= @link.score %>);
+$(".likes-count[data-id=" + <%= params[:id] %>+ "]").text(<%= @link.get_likes.size %>);
+$(".dislikes-count[data-id=" + <%= params[:id] %>+ "]").text(<%= @link.get_dislikes.size %>);

@@ -1,0 +1,3 @@
+$(".entry-score[data-id=" + <%= params[:id] %>+ "]").text(<%= @entry.vote_score %>);
+$(".entry-likes[data-id=" + <%= params[:id] %>+ "]").text(<%= @entry.get_likes.size %>);
+$(".entry-dislikes[data-id=" + <%= params[:id] %>+ "]").text(<%= @entry.get_dislikes.size %>);

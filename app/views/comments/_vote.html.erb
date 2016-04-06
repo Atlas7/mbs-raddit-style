@@ -1,0 +1,35 @@
+<div class="btn-group">
+
+  <% if user_signed_in? %>
+
+    <%= link_to upvote_comment_path(comment), remote: true ,method: :put, class: "btn btn-default btn-xs" do %>
+      <span class="comment-likes glyphicon glyphicon-chevron-up">
+        <%= comment.get_likes.size %>
+      </span>
+    <% end %>
+
+    <%= link_to downvote_comment_path(comment), remote: true, method: :put, class: "btn btn-default btn-xs" do %>
+      <span class="comment-dislikes glyphicon glyphicon-chevron-down">
+        <%= comment.get_dislikes.size %>
+      <span>
+    <% end %>
+
+  <% else %>
+
+    <%= link_to new_user_session_path, class: "btn btn-default btn-xs" do %>
+      <span class="comment-likes glyphicon glyphicon-chevron-up">
+        <%= comment.get_likes.size %>
+      </span>
+    <% end %>
+
+    <%= link_to new_user_session_path, class: "btn btn-default btn-xs" do %>
+      <span class="comment-dislikes glyphicon glyphicon-chevron-down">
+        <%= comment.get_dislikes.size %>
+      <span>
+    <% end %>
+
+  <% end %>
+
+  <span class="comment-score btn btn-default btn-xs disabled" data-id="<%= comment.id %>"><%= comment.score %></span>
+
+</div>

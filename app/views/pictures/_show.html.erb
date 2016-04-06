@@ -1,0 +1,5 @@
+<%= form_for(picture) do |f| %>
+  <fieldset disabled>
+    <%= render partial: 'pictures/form', locals: {picture: picture}, :f => f %>
+  </fieldset>
+<% end %>

@@ -1,0 +1,7 @@
+<div>
+  <small class="author">Submitted <%= time_ago_in_words(entry.created_at) %> ago by <%= link_to entry.user.name, user_profile_path(entry.user.id) %>
+    <% if entry.user.profile.name %>
+      (<%= entry.user.profile.name %>)
+    <% end %>
+  </small>
+</div>

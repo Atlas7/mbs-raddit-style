@@ -1,0 +1,35 @@
+<div class="btn-group">
+
+  <% if user_signed_in? %>
+
+    <%= link_to upvote_entry_path(entry), method: :put, remote: true, data: { id: entry.id }, class: "btn btn-default btn-sm" do %>
+      <span class="entry-likes glyphicon glyphicon-chevron-up" data-id="<%= entry.id %>">
+        <%= entry.get_likes.size %>
+      <span>
+    <% end %>
+
+    <%= link_to downvote_entry_path(entry), method: :put, remote: true, data: { id: entry.id }, class: "btn btn-default btn-sm" do %>
+      <span class="entry-dislikes glyphicon glyphicon-chevron-down" data-id="<%= entry.id %>">
+        <%= entry.get_dislikes.size %>
+      <span>
+    <% end %>
+
+  <% else %>
+
+    <%= link_to new_user_session_path, class: "btn btn-default btn-sm" do %>
+      <span class="entry-likes glyphicon glyphicon-chevron-up" data-id="<%= entry.id %>">
+        <%= entry.get_likes.size %>
+      <span>
+    <% end %>
+
+    <%= link_to new_user_session_path, class: "btn btn-default btn-sm" do %>
+      <span class="entry-dislikes glyphicon glyphicon-chevron-down" data-id="<%= entry.id %>">
+        <%= entry.get_dislikes.size %>
+      <span>
+    <% end %>
+
+  <% end %>
+
+  <span class="entry-score btn btn-default btn-sm disabled" data-id="<%= entry.id %>"><%= entry.vote_score %></span>
+
+</div>

@@ -1,0 +1,9 @@
+<div>
+  Submitted by <a href="#" class="comment-user"><%= comment.user.name %></a>
+  <small class="author">Submitted <%= time_ago_in_words(comment.created_at) %> ago by
+    <%= link_to comment.user.name, user_profile_path(comment.user.id) %>
+    <% if comment.user.profile.name %>
+      (<%= comment.user.profile.name %>)
+    <% end %>
+  </small>
+</div>

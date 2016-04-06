@@ -1,0 +1,10 @@
+<h2><%= link_to quote.title, quote %></h2>
+
+<div>
+  <small class="author">Submitted <%= time_ago_in_words(quote.created_at) %> ago </small>
+</div>
+
+<div class="btn-group">
+  <%= link_to 'Destroy', quote, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+</div>
+

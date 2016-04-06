@@ -1,0 +1,5 @@
+<% entries.each do |entry| %>
+  <%= render partial: 'entries/list_an_entry', locals: {entry: entry} %>
+  <%= render partial: 'entries/submitted_by', locals: {entry: entry}  %>
+  <%= render partial: 'entries/vote', locals: {entry: entry} %>
+<% end %>

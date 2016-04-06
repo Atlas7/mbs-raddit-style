@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Minboso</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+    <%= csrf_meta_tags %>
+
+  </head>
+  <body>
+    <header class="navbar navbar-default" role="navigation">
+      <div class="navbar-inner">
+        <div class="container">
+          <div id="logo" class="navbar-brand"><%= link_to "Minboso", root_path %></div>
+          <nav class="collapse navbar-collapse navbar-ex1-collapse">
+            <% if user_signed_in? %>
+              <ul class="nav navbar-nav navbar-right">
+                <li><%= link_to 'Account', edit_user_registration_path %></li>
+                <li><%= link_to 'Profile', user_profile_path(current_user) %></li>
+                <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+              </ul>
+            <% else %>
+              <ul class="nav navbar-nav pull-right">
+                <li><%= link_to 'Sign up', new_user_registration_path %></li>
+                <li><%= link_to 'Sign in', new_user_session_path %></li>
+              </ul>
+            <% end %>
+          </nav>
+        </div>
+        <div class="container">
+          <nav class="collapse navbar-collapse navbar-ex1-collapse">
+              <ul class="nav navbar-nav navbar-center">
+                <% Category.all.each do |category| %>
+                <li><%= link_to category.name, entries_path(category_name: category.name) %></li>
+                <% end %>
+              </ul>
+          </nav>
+        </div>
+        <div class="container">
+          <nav class="collapse navbar-collapse navbar-ex1-collapse">
+              <ul class="nav navbar-nav navbar-center">
+                <li><%= link_to 'Entries', entries_path %></li>
+                <li><%= link_to 'Quotes', entries_path + '?element_type=Quote' %></li>
+                <li><%= link_to 'Pictures', entries_path + '?element_type=Picture' %></li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <div id="main_content" class="container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+      <% end %>
+      <div id="content" class="col-md-9 center-block">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

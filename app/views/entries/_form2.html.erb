@@ -1,0 +1,35 @@
+<%= form_for(entry) do |entry_form| %>
+
+  <div class="field">
+    <%= entry_form.label :category_id %><br/>
+    <%= entry_form.collection_select :category_id, categories, :id, :name, {include_blank: 'select category...'} %>
+  </div>
+
+  <div class="field">
+    <%= entry_form.label :medium_id %><br/>
+    <%= entry_form.grouped_collection_select :medium_id, categories, :media, :name, :id, :name, prompt: true, include_blank: true, prompt: "select medium..." %>
+  </div>
+
+  <div class= "form-medium" id="form-quote">
+    <h3>Quote form</h3>
+    <%= fields_for(quote) do |quote_form| %>
+      <div class="form-group">
+        <%= quote_form.label "Title" %><br><%= quote_form.text_field :title, class: "form-control"%><br>
+      </div>
+    <% end %>
+  </div>
+
+  <div class= "form-medium" id="form-picture">
+    <h3>Picture form</h3>
+    <%= fields_for(picture) do |picture_form| %>
+      <div class="form-group">
+        <%= picture_form.label "Title" %><br><%= picture_form.text_field :title, class: "form-control"%><br>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= entry_form.submit "Create Entry", class: "btn btn-lg btn-primary", id: "button-entry-create" %>
+  </div>
+
+<% end %>

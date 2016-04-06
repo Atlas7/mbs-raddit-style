@@ -1,0 +1,5 @@
+<h2><%= link_to quote.title, quote %></h2>
+
+<% if quote.entry.user == current_user %>
+  <%= render partial: 'destroy', locals: {quote: quote} %>
+<% end %>

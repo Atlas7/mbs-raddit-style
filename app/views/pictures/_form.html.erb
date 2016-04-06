@@ -1,0 +1,14 @@
+<%= form_for(picture) do |f| %>
+
+  <%= render partial: 'pictures/check_form_errors', locals: {picture: picture} %>
+
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-lg btn-primary" %>
+  </div>
+
+<% end %>
